@@ -1,6 +1,6 @@
-package math;
-import math.Matrix;
-public class DoubleMatrix implements Matrix{
+package com.math;
+
+public class DoubleMatrix implements Operable{
     private int M;             
     private int N;             
     private double[][] data;   
@@ -29,7 +29,7 @@ public class DoubleMatrix implements Matrix{
     }
 
     @Override
-    public Matrix add(Matrix B_in) throws RuntimeException {
+    public Operable add(Operable B_in) throws RuntimeException {
         DoubleMatrix B = (DoubleMatrix)B_in;
         if (this.N != B.M || this.M != B.N) throw new RuntimeException("Illegal matrix sizes");
         DoubleMatrix C = new DoubleMatrix(M, N);
@@ -40,7 +40,17 @@ public class DoubleMatrix implements Matrix{
     }
 
     @Override
-    public Matrix minus(Matrix B_in) throws RuntimeException {
+    public Operable minus(Operable B_in) throws RuntimeException {
+        DoubleMatrix B = (DoubleMatrix)B_in;
+        if (this.N != B.M || this.M != B.N) throw new RuntimeException("Illegal matrix sizes");
+        DoubleMatrix C = new DoubleMatrix(M, N);
+        for (int i = 0; i < M; i++)
+            for (int j = 0; j < N; j++)
+                C.data[i][j] = this.data[i][j] - B.data[i][j];
+        return C;
+    }
+    @Override
+    public Operable divide(Operable B_in) throws RuntimeException {
         DoubleMatrix B = (DoubleMatrix)B_in;
         if (this.N != B.M || this.M != B.N) throw new RuntimeException("Illegal matrix sizes");
         DoubleMatrix C = new DoubleMatrix(M, N);
@@ -54,7 +64,7 @@ public class DoubleMatrix implements Matrix{
         if (object == null){
             return false;
         }
-        if (!(object instanceof Matrix)){
+        if (!(object instanceof DoubleMatrix)){
             return false;
         }
         DoubleMatrix B = (DoubleMatrix)object;
@@ -66,7 +76,7 @@ public class DoubleMatrix implements Matrix{
     }
 
     @Override
-    public Matrix multiply(Matrix B_in) throws RuntimeException{
+    public Operable multiply(Operable B_in) throws RuntimeException{
         DoubleMatrix B = (DoubleMatrix)B_in;
         if (this.N != B.M) throw new RuntimeException("Illegal matrix sizes");
         DoubleMatrix C = new DoubleMatrix(this.M, B.N);
@@ -76,13 +86,16 @@ public class DoubleMatrix implements Matrix{
                     C.data[i][j] += (this.data[i][k] * B.data[k][j]);
         return C;
     }
+    
     @Override
-    public void show() {
+    public String show() {
+        String result = new String();
         for (int i = 0; i < M; i++) {
             for (int j = 0; j < N; j++) 
-                System.out.println(data[i][j]);
-            System.out.println();
+                result = result + data[i][j];
+            result = result + "\n";
         }
+        return result;
     }
 
     public static void main(String[] args) {

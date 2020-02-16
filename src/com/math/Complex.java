@@ -1,6 +1,7 @@
+package com.math;
 import java.lang.Math;
 
-public class Complex {
+public class Complex implements Operable{
     private double real, img, abs, cos, sin;
 
     public Complex() {}
@@ -10,64 +11,58 @@ public class Complex {
         this.img  = img;
         toTrigonometry();
     }
-
-    public String toString() {
+    
+    public double Abs() {
+        double x, y, tmp, dAnswer;
+        x = Math.abs( real );
+        y = Math.abs( img  );
+        if (x == 0)
+            return y;
+        else if (y == 0)
+            return x;
+        else if (x > y) {
+            tmp = y/x;
+            return x*Math.sqrt((1.0 + tmp*tmp));
+        } else {
+            tmp = x/y;
+            return y*Math.sqrt((1.0 + tmp*tmp));
+        } 
+    }
+    @Override
+    public String show() {
         if (img >= 0)
             return real + "+" +  img + "i";
         else
             return real + "-" + -img + "i";
     }
-
-    public Complex Add( Complex input ) {
-        try {
-            input.Abs();
-        }
-        catch (Exception exception){
-            System.out.println("Error: input is null");
-            return null;
-        }
+    @Override
+    public Operable add( Operable B_in ) {
+        Complex input = (Complex)B_in;
         Complex sum = new Complex();
         sum.real= real + input.real;
         sum.img = img  + input.img;
         return (sum);
     }
-
-    public Complex Sub( Complex input ) {
-        try {
-            input.Abs();
-        }
-        catch (Exception exception){
-            System.out.println("Error: input is null");
-            return null;
-        }
+    @Override
+    public Operable minus( Operable B_in ) {
+        Complex input = (Complex)B_in;
         Complex diff = new Complex();
         diff.real = real - input.real;
         diff.img = img - input.img;
         return (diff);
     }
-
-    public Complex Mult( Complex input ) {
-        try {
-            input.Abs();
-        }
-        catch (Exception exception){
-            System.out.println("Error: input is null");
-            return null;
-        }
+    @Override
+    public Operable multiply( Operable B_in ) {
+        Complex input = (Complex)B_in;
         Complex mult = new Complex();
         mult.real= real*input.real - img*input.img;
         mult.img = img*input.real  + real*input.img;
         return (mult);
     }
 
-    public Complex Div( Complex input ) {
-        try {
-            input.Abs();
-        }
-        catch (Exception exception){
-            System.out.println("Error: input is null");
-            return null;
-        }
+    @Override
+    public Operable divide( Operable B_in ) {
+        Complex input = (Complex)B_in;
         Complex div = new Complex();
         double first, second;
         if (input.real == 0 || input.img == 0){
@@ -85,23 +80,6 @@ public class Complex {
             div.img  = (first*img - real)/second;
         }
         return (div);
-    }
-
-    public double Abs() {
-        double x, y, tmp, dAnswer;
-        x = Math.abs( real );
-        y = Math.abs( img  );
-        if (x == 0)
-            return y;
-        else if (y == 0)
-            return x;
-        else if (x > y) {
-            tmp = y/x;
-            return x*Math.sqrt((1.0 + tmp*tmp));
-        } else {
-            tmp = x/y;
-            return y*Math.sqrt((1.0 + tmp*tmp));
-        } 
     }
 
     public String toTrigonometry(){
@@ -135,9 +113,4 @@ public class Complex {
         return result;
     }
 
-    public static void main ( String args[] ) {
-        Complex test = new Complex( 1.0, -1.0 );
-        Complex test_div = new Complex( 1.0, -1.0 );
-        System.out.println(test_div.equal(test));
-    }
 }

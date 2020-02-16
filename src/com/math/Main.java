@@ -1,12 +1,14 @@
-package math;
+package com.math;
 
 public class Main{
     public static void main(String args[]){
         System.out.println("math package");
-        Matrix a = new DoubleMatrix(new double[][]{{1,1}, {1,1}});
-        Matrix b = new DoubleMatrix(new double[][]{{1,2}, {1,4}});
+        Complex f = new Complex(1, 2);
+        Operable a = new DoubleMatrix(new double[][]{{1,1}, {1,1}});
+        Operable b = new DoubleMatrix(new double[][]{{1,2}, {1,4}});
+        Operable rt = new ComplexMatrix(new Complex[][]{{f,f}, {f,f}});
         try{
-            Matrix c = a.add(b);
+            Operable c = a.add(b);
             c.show();
         }
         catch(Exception ex){
