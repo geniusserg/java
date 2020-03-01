@@ -28,8 +28,8 @@ public class DoubleMatrix {
         return A;
     }
 
-    @Override
-    public Operable add(Operable B_in) throws RuntimeException {
+
+    public DoubleMatrix add(DoubleMatrix B_in) throws RuntimeException {
         DoubleMatrix B = (DoubleMatrix)B_in;
         if (this.N != B.M || this.M != B.N) throw new RuntimeException("Illegal matrix sizes");
         DoubleMatrix C = new DoubleMatrix(M, N);
@@ -39,8 +39,8 @@ public class DoubleMatrix {
         return C;
     }
 
-    @Override
-    public Operable minus(Operable B_in) throws RuntimeException {
+
+    public DoubleMatrix minus(DoubleMatrix B_in) throws RuntimeException {
         DoubleMatrix B = (DoubleMatrix)B_in;
         if (this.N != B.M || this.M != B.N) throw new RuntimeException("Illegal matrix sizes");
         DoubleMatrix C = new DoubleMatrix(M, N);
@@ -49,8 +49,8 @@ public class DoubleMatrix {
                 C.data[i][j] = this.data[i][j] - B.data[i][j];
         return C;
     }
-    @Override
-    public Operable divide(Operable B_in) throws RuntimeException {
+
+    public DoubleMatrix divide(DoubleMatrix B_in) throws RuntimeException {
         DoubleMatrix B = (DoubleMatrix)B_in;
         if (this.N != B.M || this.M != B.N) throw new RuntimeException("Illegal matrix sizes");
         DoubleMatrix C = new DoubleMatrix(M, N);
@@ -75,8 +75,7 @@ public class DoubleMatrix {
         return true;
     }
 
-    @Override
-    public Operable multiply(Operable B_in) throws RuntimeException{
+    public DoubleMatrix multiply(DoubleMatrix B_in) throws RuntimeException{
         DoubleMatrix B = (DoubleMatrix)B_in;
         if (this.N != B.M) throw new RuntimeException("Illegal matrix sizes");
         DoubleMatrix C = new DoubleMatrix(this.M, B.N);
@@ -87,7 +86,6 @@ public class DoubleMatrix {
         return C;
     }
     
-    @Override
     public String show() {
         String result = new String();
         for (int i = 0; i < M; i++) {

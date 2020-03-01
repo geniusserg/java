@@ -28,31 +28,31 @@ public class Complex {
             return y*Math.sqrt((1.0 + tmp*tmp));
         } 
     }
-    @Override
+
     public String show() {
         if (img >= 0)
             return real + "+" +  img + "i";
         else
             return real + "-" + -img + "i";
     }
-    @Override
-    public Operable add( Operable B_in ) {
+
+    public Complex add( Complex B_in ) {
         Complex input = (Complex)B_in;
         Complex sum = new Complex();
         sum.real= real + input.real;
         sum.img = img  + input.img;
         return (sum);
     }
-    @Override
-    public Operable minus( Operable B_in ) {
+
+    public Complex minus( Complex B_in ) {
         Complex input = (Complex)B_in;
         Complex diff = new Complex();
         diff.real = real - input.real;
         diff.img = img - input.img;
         return (diff);
     }
-    @Override
-    public Operable multiply( Operable B_in ) {
+
+    public Complex multiply( Complex B_in ) {
         Complex input = (Complex)B_in;
         Complex mult = new Complex();
         mult.real= real*input.real - img*input.img;
@@ -60,8 +60,7 @@ public class Complex {
         return (mult);
     }
 
-    @Override
-    public Operable divide( Operable B_in ) {
+    public Complex divide( Complex B_in ) {
         Complex input = (Complex)B_in;
         Complex div = new Complex();
         double first, second;

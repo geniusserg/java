@@ -28,7 +28,7 @@ public class ComplexMatrix{
         return A;
     }
 
-    public Operable add(Operable B_in) throws RuntimeException {
+    public ComplexMatrix add(ComplexMatrix B_in) throws RuntimeException {
         ComplexMatrix B = (ComplexMatrix)B_in;
         if (this.N != B.M || this.M != B.N) throw new RuntimeException("Illegal matrix sizes");
         ComplexMatrix C = new ComplexMatrix(M, N);
@@ -38,7 +38,7 @@ public class ComplexMatrix{
         return C;
     }
 
-    public Operable minus(Operable B_in) throws RuntimeException {
+    public ComplexMatrix minus(ComplexMatrix B_in) throws RuntimeException {
         ComplexMatrix B = (ComplexMatrix)B_in;
         if (this.N != B.M || this.M != B.N) throw new RuntimeException("Illegal matrix sizes");
         ComplexMatrix C = new ComplexMatrix(M, N);
@@ -47,7 +47,7 @@ public class ComplexMatrix{
                 C.data[i][j] = this.data[i][j].minus(B.data[i][j]);
         return C;
     }
-    public ComplexMatrix divide(Operable B_in) throws RuntimeException {
+    public ComplexMatrix divide(ComplexMatrix B_in) throws RuntimeException {
         ComplexMatrix B = (ComplexMatrix)B_in;
         if (this.N != B.M || this.M != B.N) throw new RuntimeException("Illegal matrix sizes");
         ComplexMatrix C = new ComplexMatrix(M, N);
@@ -72,8 +72,8 @@ public class ComplexMatrix{
         return true;
     }
 
-    @Override
-    public Operable multiply(Operable B_in) throws RuntimeException{
+
+    public ComplexMatrix multiply(ComplexMatrix B_in) throws RuntimeException{
         ComplexMatrix B = (ComplexMatrix)B_in;
         if (this.N != B.M) throw new RuntimeException("Illegal matrix sizes");
         ComplexMatrix C = new ComplexMatrix(this.M, B.N);
@@ -82,9 +82,8 @@ public class ComplexMatrix{
                 for (int k = 0; k < this.N; k++)
                     C.data[i][j] = C.data[i][j].add(this.data[i][k].multiply(B.data[k][j]));
         return C;
-    }
-    
-    @Override
+	}
+	
     public String show() {
         String result = new String();
         for (int i = 0; i < M; i++) {
