@@ -1,9 +1,9 @@
 package com.math;
 
-public class ComplexMatrix implements Operable{
+public class ComplexMatrix{
     private int M;             
     private int N;             
-    private Operable[][] data;   
+    private Complex[][] data;   
 
     public ComplexMatrix(int M, int N) {
         this.M = M;
@@ -28,7 +28,6 @@ public class ComplexMatrix implements Operable{
         return A;
     }
 
-    @Override
     public Operable add(Operable B_in) throws RuntimeException {
         ComplexMatrix B = (ComplexMatrix)B_in;
         if (this.N != B.M || this.M != B.N) throw new RuntimeException("Illegal matrix sizes");
@@ -39,7 +38,6 @@ public class ComplexMatrix implements Operable{
         return C;
     }
 
-    @Override
     public Operable minus(Operable B_in) throws RuntimeException {
         ComplexMatrix B = (ComplexMatrix)B_in;
         if (this.N != B.M || this.M != B.N) throw new RuntimeException("Illegal matrix sizes");
@@ -49,8 +47,7 @@ public class ComplexMatrix implements Operable{
                 C.data[i][j] = this.data[i][j].minus(B.data[i][j]);
         return C;
     }
-    @Override
-    public Operable divide(Operable B_in) throws RuntimeException {
+    public ComplexMatrix divide(Operable B_in) throws RuntimeException {
         ComplexMatrix B = (ComplexMatrix)B_in;
         if (this.N != B.M || this.M != B.N) throw new RuntimeException("Illegal matrix sizes");
         ComplexMatrix C = new ComplexMatrix(M, N);

@@ -1,6 +1,6 @@
 package com.math;
 
-public class DoubleMatrix implements Operable{
+public class DoubleMatrix {
     private int M;             
     private int N;             
     private double[][] data;   

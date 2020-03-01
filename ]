@@ -4,12 +4,12 @@ public class Main{
     public static void main(String args[]){
         System.out.println("math package");
         Complex f = new Complex(1, 2);
-        DoubleMatrix a = new DoubleMatrix(new double[][]{{1,1}, {1,1}});
+        DoubleMatrix = new DoubleMatrix(new double[][]{{1,1}, {1,1}});
         DoubleMatrix b = new DoubleMatrix(new double[][]{{1}, {1}});
         ComplexMatrix rt = new ComplexMatrix(new Complex[][]{{f,f}, {f,f}});
         try{
-            Complex r = f.add(f);
-            r.show();
+            Complex r = f.add(b);
+            c.show();
         }
         catch(Exception ex){
             for (int i = 0; i < ex.getStackTrace().length; i++){
@@ -20,7 +20,5 @@ public class Main{
                 }
             }
         }
-    
-	System.out.println("boo");
-}
+    }
 }

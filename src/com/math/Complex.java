@@ -1,7 +1,7 @@
 package com.math;
 import java.lang.Math;
 
-public class Complex implements Operable{
+public class Complex {
     private double real, img, abs, cos, sin;
 
     public Complex() {}
