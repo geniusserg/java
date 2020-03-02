@@ -11,9 +11,9 @@ public class Main{
             DoubleMatrix DMr = DMa.add(DMa);
             System.out.println(DMr.show());
             ComplexMatrix CMp = CMc.minus(CMc);
-	    System.out.println(CMc.show());
-	    DoubleMatrix DMe = DMa.add(DMb);
-	    System.out.println(DMe);
+	        System.out.println(CMc.show());
+	        DoubleMatrix DMe = DMa.add(DMb);
+	        System.out.println(DMe);
 	}
         catch(Exception ex){
             for (int i = 0; i < ex.getStackTrace().length; i++){

@@ -47,15 +47,6 @@ public class ComplexMatrix{
                 C.data[i][j] = this.data[i][j].minus(B.data[i][j]);
         return C;
     }
-    public ComplexMatrix divide(ComplexMatrix B_in) throws RuntimeException {
-        ComplexMatrix B = (ComplexMatrix)B_in;
-        if (this.N != B.M || this.M != B.N) throw new RuntimeException("Illegal matrix sizes");
-        ComplexMatrix C = new ComplexMatrix(M, N);
-        for (int i = 0; i < M; i++)
-            for (int j = 0; j < N; j++)
-                C.data[i][j] = this.data[i][j].divide(B.data[i][j]);
-        return C;
-    }
 
     public boolean equal(Object object) {
         if (object == null){

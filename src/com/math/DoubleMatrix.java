@@ -50,16 +50,6 @@ public class DoubleMatrix {
         return C;
     }
 
-    public DoubleMatrix divide(DoubleMatrix B_in) throws RuntimeException {
-        DoubleMatrix B = (DoubleMatrix)B_in;
-        if (this.N != B.M || this.M != B.N) throw new RuntimeException("Illegal matrix sizes");
-        DoubleMatrix C = new DoubleMatrix(M, N);
-        for (int i = 0; i < M; i++)
-            for (int j = 0; j < N; j++)
-                C.data[i][j] = this.data[i][j] - B.data[i][j];
-        return C;
-    }
-
     public boolean equal(Object object) {
         if (object == null){
             return false;
