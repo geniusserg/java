@@ -11,7 +11,7 @@ public class Main{
             DoubleMatrix DMr = DMa.add(DMa);
             System.out.println(DMr);
             ComplexMatrix CMp = CMc.minus(CMc);
-	        System.out.println(CMc);
+	        System.out.println(CMp);
 	        DoubleMatrix DMe = DMa.add(DMb);
 	        System.out.println(DMe);
 	}
