@@ -86,11 +86,4 @@ public class DoubleMatrix {
         return result;
     }
 
-    public static void main(String[] args) {
-        double[][] d = { { 1, 2, 3 }, { 4, 5, 6 }, { 9, 1, 3} };
-        DoubleMatrix D = new DoubleMatrix(d);
-        DoubleMatrix S = new DoubleMatrix(1,1);
-        D.add(S);
-        D.show();
-    }
 }
