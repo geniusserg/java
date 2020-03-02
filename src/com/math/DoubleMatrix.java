@@ -76,7 +76,7 @@ public class DoubleMatrix {
         return C;
     }
     
-    public String show() {
+    public String toString() {
         String result = new String();
         for (int i = 0; i < M; i++) {
             for (int j = 0; j < N; j++) 

@@ -9,9 +9,9 @@ public class Main{
         ComplexMatrix CMc = new ComplexMatrix(new Complex[][]{{Cd,Cd}, {Cd,Cd}});
         try{
             DoubleMatrix DMr = DMa.add(DMa);
-            System.out.println(DMr.show());
+            System.out.println(DMr);
             ComplexMatrix CMp = CMc.minus(CMc);
-	        System.out.println(CMc.show());
+	        System.out.println(CMc);
 	        DoubleMatrix DMe = DMa.add(DMb);
 	        System.out.println(DMe);
 	}
