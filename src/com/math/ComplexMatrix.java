@@ -79,7 +79,7 @@ public class ComplexMatrix{
         String result = new String();
         for (int i = 0; i < M; i++) {
             for (int j = 0; j < N; j++) 
-                result = result + data[i][j].show() + " ";
+                result = result + data[i][j].toString() + " ";
             result = result + "\n";
         }
         return result;

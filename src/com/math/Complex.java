@@ -29,7 +29,7 @@ public class Complex {
         } 
     }
 
-    public String show() {
+    public String toString() {
         if (img >= 0)
             return real + "+" +  img + "i";
         else
